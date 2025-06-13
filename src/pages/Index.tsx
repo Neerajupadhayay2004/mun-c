@@ -5,6 +5,7 @@ import Sidebar from '@/components/layout/Sidebar';
 import Header from '@/components/layout/Header';
 import ProductGrid from '@/components/inventory/ProductGrid';
 import AddProductForm from '@/components/inventory/AddProductForm';
+import AuthForm from '@/components/auth/AuthForm';
 
 const Index = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -57,15 +58,7 @@ const Index = () => {
   if (!isSignedIn) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow">
-          <h2 className="text-2xl font-bold text-center">Sign In</h2>
-          <button
-            onClick={() => setIsSignedIn(true)}
-            className="w-full py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700"
-          >
-            Sign In
-          </button>
-        </div>
+        <AuthForm onSignIn={() => setIsSignedIn(true)} />
       </div>
     );
   }
@@ -80,7 +73,12 @@ const Index = () => {
           onViewChange={setCurrentView}
         />
         <div className="flex-1 flex flex-col">
-          <Header onSignOut={handleSignOut} notifications={notifications} />
+          <Header 
+            onSignOut={handleSignOut} 
+            notifications={notifications}
+            onToggleSidebar={handleSidebarToggle}
+            onViewChange={setCurrentView}
+          />
           <main className="flex-1 overflow-auto">
             {renderContent()}
           </main>
