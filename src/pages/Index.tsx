@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { ThemeProvider } from '@/components/theme/ThemeProvider';
@@ -9,7 +8,7 @@ import AddProductForm from '@/components/inventory/AddProductForm';
 import AuthForm from '@/components/auth/AuthForm';
 
 const Index = () => {
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(true); // Start collapsed on mobile
   const [currentView, setCurrentView] = useState('dashboard');
   const [isSignedIn, setIsSignedIn] = useState(true);
   const [notifications] = useState(3);
@@ -181,12 +180,13 @@ const Index = () => {
             currentView={currentView}
             onViewChange={setCurrentView}
           />
-          <div className="flex-1 flex flex-col">
+          <div className="flex-1 flex flex-col min-w-0">
             <Header 
               onSignOut={handleSignOut} 
               notifications={notifications}
               onToggleSidebar={handleSidebarToggle}
               onViewChange={setCurrentView}
+              sidebarCollapsed={sidebarCollapsed}
             />
             <main className="flex-1 overflow-auto">
               {renderContent()}
