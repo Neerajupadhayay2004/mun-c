@@ -1,7 +1,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'light' | 'dark' | 'system' | 'blue' | 'purple' | 'green' | 'orange' | 'rose' | 'coffee';
+type Theme = 'light' | 'dark' | 'system' | 'blue' | 'purple' | 'green' | 'orange' | 'rose' | 'coffee' | 'midnight' | 'forest' | 'sunset';
 
 interface ThemeContextType {
   theme: Theme;
@@ -40,7 +40,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     const root = document.documentElement;
     
     // Remove all theme classes
-    root.classList.remove('light', 'dark', 'theme-blue', 'theme-purple', 'theme-green', 'theme-orange', 'theme-rose', 'theme-coffee');
+    root.classList.remove('light', 'dark', 'theme-blue', 'theme-purple', 'theme-green', 'theme-orange', 'theme-rose', 'theme-coffee', 'theme-midnight', 'theme-forest', 'theme-sunset');
     
     // Apply new theme
     if (newTheme === 'system') {

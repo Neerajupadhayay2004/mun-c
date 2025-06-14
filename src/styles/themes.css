@@ -50,7 +50,7 @@
   --ring: 224.3 76.3% 94.1%;
 }
 
-/* Blue Ocean Theme */
+/* Ocean Blue Theme */
 .theme-blue {
   --background: 210 100% 6%;
   --foreground: 210 40% 98%;
@@ -62,6 +62,8 @@
   --accent-foreground: 210 40% 98%;
   --muted: 210 60% 15%;
   --muted-foreground: 210 30% 70%;
+  --card: 210 60% 12%;
+  --card-foreground: 210 40% 98%;
   --border: 210 50% 20%;
   --input: 210 50% 20%;
   --ring: 200 100% 50%;
@@ -79,6 +81,8 @@
   --accent-foreground: 270 40% 98%;
   --muted: 270 60% 15%;
   --muted-foreground: 270 30% 70%;
+  --card: 270 60% 12%;
+  --card-foreground: 270 40% 98%;
   --border: 270 50% 20%;
   --input: 270 50% 20%;
   --ring: 270 100% 65%;
@@ -96,6 +100,8 @@
   --accent-foreground: 120 40% 98%;
   --muted: 120 60% 15%;
   --muted-foreground: 120 30% 70%;
+  --card: 120 60% 12%;
+  --card-foreground: 120 40% 98%;
   --border: 120 50% 20%;
   --input: 120 50% 20%;
   --ring: 120 100% 50%;
@@ -113,6 +119,8 @@
   --accent-foreground: 20 40% 98%;
   --muted: 20 60% 15%;
   --muted-foreground: 20 30% 70%;
+  --card: 20 60% 12%;
+  --card-foreground: 20 40% 98%;
   --border: 20 50% 20%;
   --input: 20 50% 20%;
   --ring: 25 100% 60%;
@@ -130,6 +138,8 @@
   --accent-foreground: 340 40% 98%;
   --muted: 340 60% 15%;
   --muted-foreground: 340 30% 70%;
+  --card: 340 60% 12%;
+  --card-foreground: 340 40% 98%;
   --border: 340 50% 20%;
   --input: 340 50% 20%;
   --ring: 350 100% 65%;
@@ -147,30 +157,66 @@
   --accent-foreground: 30 40% 95%;
   --muted: 30 30% 15%;
   --muted-foreground: 30 20% 70%;
+  --card: 30 30% 12%;
+  --card-foreground: 30 40% 95%;
   --border: 30 40% 20%;
   --input: 30 40% 20%;
   --ring: 25 70% 50%;
 }
 
-/* Scrollbar Styles */
-.scrollbar-thin {
-  scrollbar-width: thin;
+/* Midnight Blue Theme */
+.theme-midnight {
+  --background: 220 100% 4%;
+  --foreground: 220 40% 98%;
+  --primary: 210 100% 60%;
+  --primary-foreground: 220 100% 4%;
+  --secondary: 220 60% 15%;
+  --secondary-foreground: 220 40% 98%;
+  --accent: 210 80% 20%;
+  --accent-foreground: 220 40% 98%;
+  --muted: 220 60% 12%;
+  --muted-foreground: 220 30% 70%;
+  --card: 220 60% 8%;
+  --card-foreground: 220 40% 98%;
+  --border: 220 50% 18%;
+  --input: 220 50% 18%;
+  --ring: 210 100% 60%;
 }
 
-.scrollbar-thumb-gray-300::-webkit-scrollbar-thumb {
-  background-color: rgb(209 213 219);
-  border-radius: 0.375rem;
+/* Forest Green Theme */
+.theme-forest {
+  --background: 150 100% 4%;
+  --foreground: 150 40% 98%;
+  --primary: 140 100% 45%;
+  --primary-foreground: 150 100% 4%;
+  --secondary: 150 60% 15%;
+  --secondary-foreground: 150 40% 98%;
+  --accent: 140 80% 20%;
+  --accent-foreground: 150 40% 98%;
+  --muted: 150 60% 12%;
+  --muted-foreground: 150 30% 70%;
+  --card: 150 60% 8%;
+  --card-foreground: 150 40% 98%;
+  --border: 150 50% 18%;
+  --input: 150 50% 18%;
+  --ring: 140 100% 45%;
 }
 
-.scrollbar-thumb-gray-600::-webkit-scrollbar-thumb {
-  background-color: rgb(75 85 99);
-  border-radius: 0.375rem;
-}
-
-.scrollbar-thin::-webkit-scrollbar {
-  width: 6px;
-}
-
-.scrollbar-thin::-webkit-scrollbar-track {
-  background: transparent;
+/* Sunset Red Theme */
+.theme-sunset {
+  --background: 0 100% 6%;
+  --foreground: 0 40% 98%;
+  --primary: 10 100% 55%;
+  --primary-foreground: 0 100% 6%;
+  --secondary: 0 60% 18%;
+  --secondary-foreground: 0 40% 98%;
+  --accent: 10 80% 25%;
+  --accent-foreground: 0 40% 98%;
+  --muted: 0 60% 15%;
+  --muted-foreground: 0 30% 70%;
+  --card: 0 60% 12%;
+  --card-foreground: 0 40% 98%;
+  --border: 0 50% 20%;
+  --input: 0 50% 20%;
+  --ring: 10 100% 55%;
 }
