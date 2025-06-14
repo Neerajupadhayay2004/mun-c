@@ -28,7 +28,7 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ isCollapsed, onToggle, currentView, onViewChange }: SidebarProps) => {
-  const [expandedSections, setExpandedSections] = useState<string[]>([]);
+  const [expandedSections, setExpandedSections] = useState<string[]>(['inventory']);
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
 
@@ -55,8 +55,8 @@ const Sidebar = ({ isCollapsed, onToggle, currentView, onViewChange }: SidebarPr
 
   const handleMenuClick = (viewId: string) => {
     onViewChange(viewId);
-    if (isMobile || isTablet) {
-      onToggle(); // Close sidebar on mobile/tablet after selection
+    if (isMobile) {
+      onToggle(); // Close sidebar on mobile after selection
     }
   };
 
@@ -166,12 +166,12 @@ const Sidebar = ({ isCollapsed, onToggle, currentView, onViewChange }: SidebarPr
     }
   ];
 
-  // Overlay for mobile/tablet
+  // Overlay for mobile
   const renderOverlay = () => {
-    if (!isCollapsed && (isMobile || isTablet)) {
+    if (!isCollapsed && isMobile) {
       return (
         <div 
-          className="fixed inset-0 bg-black/50 z-20 lg:hidden"
+          className="fixed inset-0 bg-black/50 z-20 lg:hidden transition-opacity duration-300"
           onClick={onToggle}
         />
       );
@@ -183,23 +183,33 @@ const Sidebar = ({ isCollapsed, onToggle, currentView, onViewChange }: SidebarPr
     <>
       {renderOverlay()}
       <div className={cn(
-        "bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 h-screen transition-all duration-300 ease-in-out flex flex-col shadow-lg z-30",
-        // Mobile and Tablet: Fixed positioning with sliding
-        "fixed lg:relative",
-        // Width based on device
-        isMobile ? "w-80" : isTablet ? "w-72" : "w-64",
-        // Sliding animation for mobile/tablet
-        (isMobile || isTablet) ? (
-          isCollapsed 
-            ? "-translate-x-full opacity-0" 
-            : "translate-x-0 opacity-100"
+        "bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 h-screen flex flex-col shadow-lg z-30 transition-all duration-300 ease-in-out",
+        // Mobile: Fixed positioning with sliding
+        isMobile ? (
+          cn(
+            "fixed left-0 top-0 w-80",
+            isCollapsed 
+              ? "-translate-x-full opacity-0" 
+              : "translate-x-0 opacity-100"
+          )
+        ) : isTablet ? (
+          // Tablet: Fixed positioning with sliding
+          cn(
+            "fixed left-0 top-0 w-72",
+            isCollapsed 
+              ? "-translate-x-full opacity-0" 
+              : "translate-x-0 opacity-100"
+          )
         ) : (
-          // Desktop collapse behavior
-          isCollapsed ? "w-16" : "w-64"
+          // Desktop: Static positioning with width change
+          cn(
+            "relative",
+            isCollapsed ? "w-16" : "w-64"
+          )
         )
       )}>
         {/* Header */}
-        <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between min-h-[73px]">
+        <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between min-h-[73px] flex-shrink-0">
           {(!isCollapsed || isMobile || isTablet) && (
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -215,7 +225,7 @@ const Sidebar = ({ isCollapsed, onToggle, currentView, onViewChange }: SidebarPr
               variant="ghost"
               size="sm"
               onClick={onToggle}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg lg:hidden"
+              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"
             >
               <X size={16} />
             </Button>
@@ -227,7 +237,7 @@ const Sidebar = ({ isCollapsed, onToggle, currentView, onViewChange }: SidebarPr
               variant="ghost"
               size="sm"
               onClick={onToggle}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg hidden lg:flex"
+              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"
             >
               {isCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
             </Button>
@@ -308,7 +318,7 @@ const Sidebar = ({ isCollapsed, onToggle, currentView, onViewChange }: SidebarPr
 
         {/* Footer */}
         {(!isCollapsed || isMobile || isTablet) && (
-          <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="p-4 border-t border-gray-200 dark:border-gray-700 flex-shrink-0">
             <button
               onClick={() => handleMenuClick('settings')}
               className="w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
